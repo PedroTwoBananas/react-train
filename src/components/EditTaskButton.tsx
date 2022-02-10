@@ -1,9 +1,10 @@
 import React from "react";
+import '../styles/button.css';
 
 class EditTaskButton extends React.Component {
     render(): React.ReactNode {
         return(
-            <button>Изменить задачу</button>
+            <button className="button">Изменить задачу</button>
         )
     }
 }

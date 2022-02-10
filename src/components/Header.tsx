@@ -4,12 +4,12 @@ import AddButton from "./AddButton";
 import AllDoneButton from "./AllDoneButton";
 import DeleteAllDoneButton from "./DeleteAllDoneButton";
 import Input from "./Input";
-
+import '../styles/header.css'
 
 class Header extends React.Component {
     render(): React.ReactNode {
         return (
-            <div>
+            <div className="header">
                 <Input/>
                 <AddButton/>
                 <AllDoneButton/>
