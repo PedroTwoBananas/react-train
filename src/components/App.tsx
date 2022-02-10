@@ -2,11 +2,10 @@ import React from 'react';
 import { render } from 'react-dom';
 import Header from './Header';
 import TaskList from './TaskList';
-import Task from '../interfaces/Task';
-import Props from '../interfaces/Props';
+import TaskInterface from '../interfaces/TaskInterface';
 
 interface State {
-    state: { tasks: Array<Task> }
+    state: { tasks: Array<TaskInterface> }
 }
 
 class App extends React.Component implements State {
@@ -14,7 +13,7 @@ class App extends React.Component implements State {
     state = {
         tasks: []
     }
-    
+
     render(): React.ReactNode {
         return (
             <>

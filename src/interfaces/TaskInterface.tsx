@@ -1,9 +1,9 @@
 import React from "react";
 
-interface Task {
+interface TaskInterface {
     id: number,
     desc: string,
     isDone: boolean
 }
 
-export default Task;
+export default TaskInterface;
