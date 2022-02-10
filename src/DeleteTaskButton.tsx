@@ -7,3 +7,5 @@ class DeleteTaskButton extends React.Component {
         )
     }
 }
+
+export default DeleteTaskButton;
