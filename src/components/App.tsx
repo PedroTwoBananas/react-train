@@ -2,12 +2,8 @@ import React from 'react';
 import { render } from 'react-dom';
 import Header from './Header';
 import TaskList from './TaskList';
+import Task from '../interfaces/Task';
 
-interface Task {
-    id: number,
-    desc: string,
-    isDone: boolean
-}
 
 interface State {
     state: { tasks: Array<Task> }
