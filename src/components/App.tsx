@@ -3,8 +3,20 @@ import { render } from 'react-dom';
 import Header from './Header';
 import TaskList from './TaskList';
 
+interface Task {
+    id: number,
+    desc: string,
+    isDone: boolean
+}
 
-class App extends React.Component {
+interface State {
+    state: { tasks: Array<Task> }
+}
+
+class App  extends React.Component implements State {
+    state = {
+        tasks: []
+    }
     render(): React.ReactNode {
         return (
             <>
