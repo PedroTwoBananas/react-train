@@ -2,9 +2,14 @@ import React from "react";
 import '../styles/button.css';
 
 class DeleteAllDoneButton extends React.Component {
+
+    deleteAllDone = () => {
+        this.props.deleteAllDoneTasks();
+    }
+
 render(): React.ReactNode {
     return(
-        <button className="button">Удалить выполненное</button>
+        <button onClick={this.deleteAllDone} className="button">Удалить выполненное</button>
     )
 }
 }

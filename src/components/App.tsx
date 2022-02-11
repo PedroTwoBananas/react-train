@@ -21,20 +21,40 @@ class App extends React.Component implements State {
     }
 
     deleteTask = (id) => {
-        // const tasks = this.state.tasks;
-        this.setState({tasks: this.state.tasks.filter(task => task.id !== id )});
+        this.setState({ tasks: this.state.tasks.filter(task => task.id !== id) });
     }
 
-    // markAsDone = (task) = {
-    //     let tasks = this.state.tasks;
+    // deleteAllDoneTasks = () => {
+    //     this.setState({tasks: this.state.tasks.filter(task => task.id !== true)})
+    // }
 
+    // markAsDone = (id) => {
+    //     this.setState({
+    //         tasks: this.state.tasks.map(task => {
+    //             if (task.id === id) {
+    //                 task.isDone = true;
+    //             }
+    //             return this.state.tasks;
+    //         })
+    //     })
+    // }
+
+    // markAllAsDone = () => {
+    //     this.setState({
+    //         tasks: this.state.tasks.map(task => {
+    //             if(task.isDone === false) {
+    //                 task.isDone = true;
+    //             }
+    //             return this.state.tasks
+    //         })
+    //     })
     // }
 
     render(): React.ReactNode {
         return (
             <>
-                <Header getTask={this.getTask} />
-                <TaskList Tasks = {this.state.tasks} deleteTask = {this.deleteTask} />
+                <Header getTask={this.getTask} /*markAllAsDone={this.markAllAsDone} deleteAllDoneTasks={this.deleteAllDoneTasks}*/ tasks={this.state.tasks}/>
+                <TaskList tasks={this.state.tasks} deleteTask={this.deleteTask} markAsDone={this.markAsDone} />
             </>
         )
     }

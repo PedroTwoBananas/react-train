@@ -11,8 +11,8 @@ class Header extends React.Component {
         return (
             <div className="header">
                 <TaskForm getTask={this.props.getTask} />
-                <AllDoneButton />
-                <DeleteAllDoneButton />
+                <AllDoneButton /*markAllAsDone={this.props.markAllAsDone}*/ tasks={this.props.tasks}/>
+                <DeleteAllDoneButton /*deleteAllDoneTasks={this.props.deleteAllDoneTasks}*/ tasks={this.props.tasks}/>
             </div>
         )
     }

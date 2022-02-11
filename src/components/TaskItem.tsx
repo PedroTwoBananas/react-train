@@ -10,7 +10,7 @@ class TaskItem extends React.Component {
                 <span>{this.props.text.desc}</span>
                 <DeleteTaskButton id = {this.props.text.id} deleteTask={this.props.deleteTask} />
                 <EditTaskButton />
-                <DoneButton/>
+                <DoneButton id = {this.props.text.id} markAsDone = {this.props.markAsDone}/>
             </li>
         )
     }
