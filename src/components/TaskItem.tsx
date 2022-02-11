@@ -6,7 +6,7 @@ class TaskItem extends React.Component {
     render(): React.ReactNode {
         return(
             <li>
-                <span></span>
+                <span>{this.props.text.desc}</span>
                 <DeleteTaskButton/>
                 <EditTaskButton/>
             </li>
