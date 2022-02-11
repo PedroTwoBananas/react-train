@@ -4,11 +4,11 @@ import EditTaskButton from "./EditTaskButton";
 
 class TaskItem extends React.Component {
     render(): React.ReactNode {
-        return(
+        return (
             <li>
                 <span>{this.props.text.desc}</span>
-                <DeleteTaskButton/>
-                <EditTaskButton/>
+                <DeleteTaskButton id = {this.props.text.id} deleteTask={this.props.deleteTask} />
+                <EditTaskButton />
             </li>
         )
     }

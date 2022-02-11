@@ -1,5 +1,6 @@
 import React, { Ref } from "react";
 import TaskInterface from "../interfaces/TaskInterface";
+import uniqid from 'uniqid';
 
 
 import '../styles/button.css';
@@ -16,7 +17,7 @@ class AddTaskForm extends React.Component {
 
     handleClick = () => {
         const textItem = {
-            id: 1,
+            id: uniqid(),
             desc: this.state.value,
             isDone: false
         }

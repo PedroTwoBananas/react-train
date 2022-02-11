@@ -20,16 +20,19 @@ class App extends React.Component implements State {
         this.setState({ tasks: tasks });
     }
 
+    deleteTask = (id) => {
+        let tasks = this.state.tasks;
+        tasks = tasks.filter(task => task.id !== id );
+        this.setState({tasks: tasks});
+    }
+
     render(): React.ReactNode {
         return (
             <>
                 <Header getTask={this.getTask} />
-                <TaskList Tasks = {this.state.tasks} />
+                <TaskList Tasks = {this.state.tasks} deleteTask = {this.deleteTask} />
             </>
-
-
         )
-
     }
 }
 
