@@ -21,10 +21,14 @@ class App extends React.Component implements State {
     }
 
     deleteTask = (id) => {
-        let tasks = this.state.tasks;
-        tasks = tasks.filter(task => task.id !== id );
-        this.setState({tasks: tasks});
+        // const tasks = this.state.tasks;
+        this.setState({tasks: this.state.tasks.filter(task => task.id !== id )});
     }
+
+    // markAsDone = (task) = {
+    //     let tasks = this.state.tasks;
+
+    // }
 
     render(): React.ReactNode {
         return (
