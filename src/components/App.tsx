@@ -29,10 +29,19 @@ class App extends React.Component {
         })
     }
 
+    markAllAsDone = () => {
+        this.setState({
+            tasks: this.state.tasks.map((task: TaskInterface) => {
+                task.isDone = true
+                return task
+            })
+        })
+    }
+
     render() {
         return (
             <>
-                <Header addTask={this.addTask}  />
+                <Header addTask={this.addTask} markAllAsDone={this.markAllAsDone} />
                 <TaskList tasks={this.state.tasks} deleteTask={this.deleteTask} markAsDone={this.markAsDone} />
             </>
         )
