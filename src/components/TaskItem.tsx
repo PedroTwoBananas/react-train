@@ -4,13 +4,22 @@ import EditTaskButton from "./EditTaskButton";
 import DoneButton from "./DoneButton";
 
 class TaskItem extends React.Component {
+
+    deleteTask = () => {
+        this.props.deleteTask(this.props.task.id)
+    }
+
+    markAsDone = () => {
+        this.props.markAsDone(this.props.task.id)
+    }
+
     render(): React.ReactNode {
         return (
             <li>
-                <span>{this.props.text.desc}</span>
-                <DeleteTaskButton id = {this.props.text.id} deleteTask={this.props.deleteTask} />
-                <EditTaskButton />
-                <DoneButton id = {this.props.text.id} markAsDone = {this.props.markAsDone}/>
+                <span>{this.props.task.desc}</span>
+                <button onClick={this.deleteTask} className="button">Удалить</button>
+                <button className="button">Изменить</button>
+                <button onClick={this.markAsDone} className="button">Отметить как выполнено</button>
             </li>
         )
     }

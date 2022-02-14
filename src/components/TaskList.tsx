@@ -9,7 +9,7 @@ class TaskList extends React.Component {
             <div>
                 <ul>
                     {this.props.tasks.map(task => {
-                        return <TaskItem key={task.id} text={task} deleteTask={this.props.deleteTask} markAsDone={this.props.markAsDone} />
+                        return <TaskItem key={task.id} task={task} deleteTask={this.props.deleteTask} markAsDone={this.props.markAsDone} />
                     })}
                 </ul>
             </div>
