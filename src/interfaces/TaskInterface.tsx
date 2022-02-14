@@ -1,8 +1,8 @@
 import React from "react";
 
 interface TaskInterface {
-    id: number,
-    desc: string | null,
+    id: string,
+    desc: string,
     isDone: boolean
 }
 

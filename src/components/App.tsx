@@ -2,13 +2,11 @@ import React from 'react';
 import Header from './Header';
 import TaskList from './TaskList';
 
-
 interface TaskInterface {
     id?: string,
     desc?: string,
     isDone?: boolean
 }
-
 
 class App extends React.Component {
 
@@ -29,7 +27,6 @@ class App extends React.Component {
             tasks: this.state.tasks.map((task: TaskInterface) => {
                 if (task.id === id) {
                     task.isDone = !task.isDone;
-
                 }
                 return task;
             })
@@ -39,7 +36,7 @@ class App extends React.Component {
     render() {
         return (
             <>
-                <Header getTask={this.addTask} tasks={this.state.tasks} />
+                <Header addTask={this.addTask}  />
                 <TaskList tasks={this.state.tasks} deleteTask={this.deleteTask} markAsDone={this.markAsDone} />
             </>
         )

@@ -1,11 +1,11 @@
 import React, { Ref } from "react";
 import TaskInterface from "../interfaces/TaskInterface";
 import uniqid from 'uniqid';
-
-
 import '../styles/button.css';
+import PropsAddTaskInterface from '../interfaces/PropsAddTaskInterface';
+import StateComponentsInterface from '../interfaces/StateComponentsInterface';
 
-class AddTaskForm extends React.Component {
+class AddTaskForm extends React.Component <PropsAddTaskInterface, StateComponentsInterface> {
 
     state = {
         value: ''
@@ -21,7 +21,7 @@ class AddTaskForm extends React.Component {
             desc: this.state.value,
             isDone: false
         }
-        this.props.getTask(textItem);
+        this.props.addTask(textItem);
         this.state.value = ''
     }
 

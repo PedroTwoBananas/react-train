@@ -1,14 +1,25 @@
 import React from "react";
 import TaskItem from "./TaskItem";
 import { render } from "react-dom";
+import TaskInterface from "../interfaces/TaskInterface";
 
-class TaskList extends React.Component {
+interface PropsInterface {
+    tasks: [],
+    deleteTask:(id: TaskInterface) => void,
+    markAsDone:(id: TaskInterface)=> void
+}
+
+interface StateInterface {
+
+}
+
+class TaskList extends React.Component<PropsInterface, StateInterface> {
 
     render() {
         return (
             <div>
                 <ul>
-                    {this.props.tasks.map(task => {
+                    {this.props.tasks.map((task) => {
                         return <TaskItem key={task.id} task={task} deleteTask={this.props.deleteTask} markAsDone={this.props.markAsDone} />
                     })}
                 </ul>

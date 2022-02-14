@@ -1,15 +1,24 @@
 import React from "react";
-import DeleteTaskButton from "./DeleteTaskButton";
-import EditTaskButton from "./EditTaskButton";
-import DoneButton from "./DoneButton";
+import TaskInterface from "../interfaces/TaskInterface";
 
-class TaskItem extends React.Component {
+interface PropsInterface {
+    key: TaskInterface,
+    task: TaskInterface,
+    deleteTask:(id: TaskInterface) => void,
+    markAsDone:(id: TaskInterface)=> void
+}
 
-    deleteTask = () => {
+interface StateInterface {
+
+}
+
+class TaskItem extends React.Component<PropsInterface, StateInterface> {
+
+    deleteTaskButton = () => {
         this.props.deleteTask(this.props.task.id)
     }
 
-    markAsDone = () => {
+    markAsDoneButton = () => {
         console.log(this.props.task.id);
         this.props.markAsDone(this.props.task.id)
     }
@@ -18,9 +27,9 @@ class TaskItem extends React.Component {
         return (
             <li>
                 <span>{this.props.task.desc}</span>
-                <button onClick={this.deleteTask} className="button">Удалить</button>
+                <button onClick={this.deleteTaskButton} className="button">Удалить</button>
                 <button className="button">Изменить</button>
-                <button onClick={this.markAsDone} className="button">Отметить как выполнено</button>
+                <button onClick={this.markAsDoneButton} className="button">Отметить как выполнено</button>
             </li>
         )
     }
