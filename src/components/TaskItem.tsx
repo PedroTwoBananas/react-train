@@ -10,10 +10,11 @@ class TaskItem extends React.Component {
     }
 
     markAsDone = () => {
+        console.log(this.props.task.id);
         this.props.markAsDone(this.props.task.id)
     }
 
-    render(): React.ReactNode {
+    render() {
         return (
             <li>
                 <span>{this.props.task.desc}</span>

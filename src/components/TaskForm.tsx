@@ -26,7 +26,7 @@ class AddTaskForm extends React.Component {
     }
 
 
-    render(): React.ReactNode {
+    render() {
 
         return (
             <div>

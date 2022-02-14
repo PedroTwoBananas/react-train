@@ -4,64 +4,42 @@ import TaskList from './TaskList';
 
 
 interface TaskInterface {
-    id: string,
-    desc: string | null,
-    isDone: boolean
-}
-
-interface State {
-    tasks: Array<TaskInterface>
+    id?: string,
+    desc?: string,
+    isDone?: boolean
 }
 
 
-class App extends React.Component <State> {
+class App extends React.Component {
 
-    state: State = {
+    state: { tasks: [] } = {
         tasks: []
     }
 
-
-    addTask = (AddedTask: TaskInterface) => {
-        const tasks = this.state.tasks;
-        tasks.push(AddedTask);
-        this.setState({ tasks: tasks });
+    addTask = (addedTask: TaskInterface) => {
+        this.setState({ tasks: [...this.state.tasks, addedTask] });
     }
 
-    deleteTask = (id: string) => {
-        this.setState({ tasks: this.state.tasks.filter(task => task.id !== id) });
+    deleteTask = (id: TaskInterface) => {
+        this.setState({ tasks: this.state.tasks.filter((task: TaskInterface) => task.id !== id) });
     }
 
-    // deleteAllDoneTasks = () => {
-    //     this.setState({tasks: this.state.tasks.filter(task => task.id !== true)})
-    // }
-
-    markAsDone = (id: string) => {
-        console.log(id);
+    markAsDone = (id: TaskInterface) => {
         this.setState({
-            tasks: this.state.tasks.map(task => {
+            tasks: this.state.tasks.map((task: TaskInterface) => {
                 if (task.id === id) {
-                    task.isDone = true;
+                    task.isDone = !task.isDone;
+
                 }
-                return this.state.tasks;
+                return task;
             })
         })
     }
 
-    // markAllAsDone = () => {
-    //     this.setState({
-    //         tasks: this.state.tasks.map(task => {
-    //             if(task.isDone === false) {
-    //                 task.isDone = true;
-    //             }
-    //             return this.state.tasks
-    //         })
-    //     })
-    // }
-
     render() {
         return (
             <>
-                <Header getTask={this.addTask} /*markAllAsDone={this.markAllAsDone} deleteAllDoneTasks={this.deleteAllDoneTasks}*/ tasks={this.state.tasks}/>
+                <Header getTask={this.addTask} tasks={this.state.tasks} />
                 <TaskList tasks={this.state.tasks} deleteTask={this.deleteTask} markAsDone={this.markAsDone} />
             </>
         )

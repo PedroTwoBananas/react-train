@@ -4,7 +4,7 @@ import { render } from "react-dom";
 
 class TaskList extends React.Component {
 
-    render(): React.ReactNode {
+    render() {
         return (
             <div>
                 <ul>
