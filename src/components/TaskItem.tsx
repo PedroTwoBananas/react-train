@@ -2,10 +2,10 @@ import React from "react";
 import TaskInterface from "../interfaces/TaskInterface";
 
 interface PropsInterface {
-    key: TaskInterface,
     task: TaskInterface,
-    deleteTask:(id: TaskInterface) => void,
-    markAsDone:(id: TaskInterface)=> void
+    key: string,
+    deleteTask:(id: string) => void,
+    markAsDone:(id: string)=> void
 }
 
 interface StateInterface {

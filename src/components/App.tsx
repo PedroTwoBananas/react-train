@@ -1,16 +1,12 @@
 import React from 'react';
 import Header from './Header';
 import TaskList from './TaskList';
+import TaskInterface from '../interfaces/TaskInterface';
 
-interface TaskInterface {
-    id?: string,
-    desc?: string,
-    isDone?: boolean
-}
 
 class App extends React.Component {
 
-    state: { tasks: [] } = {
+    state: { tasks: TaskInterface[] } = {
         tasks: []
     }
 
@@ -18,11 +14,11 @@ class App extends React.Component {
         this.setState({ tasks: [...this.state.tasks, addedTask] });
     }
 
-    deleteTask = (id: TaskInterface) => {
+    deleteTask = (id: string) => {
         this.setState({ tasks: this.state.tasks.filter((task: TaskInterface) => task.id !== id) });
     }
 
-    markAsDone = (id: TaskInterface) => {
+    markAsDone = (id: string) => {
         this.setState({
             tasks: this.state.tasks.map((task: TaskInterface) => {
                 if (task.id === id) {

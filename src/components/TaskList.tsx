@@ -4,9 +4,9 @@ import { render } from "react-dom";
 import TaskInterface from "../interfaces/TaskInterface";
 
 interface PropsInterface {
-    tasks: [],
-    deleteTask:(id: TaskInterface) => void,
-    markAsDone:(id: TaskInterface)=> void
+    tasks: TaskInterface[],
+    deleteTask:(id: string) => void,
+    markAsDone:(id: string)=> void
 }
 
 interface StateInterface {
