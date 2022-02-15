@@ -6,7 +6,8 @@ import TaskInterface from "../interfaces/TaskInterface";
 interface PropsInterface {
     tasks: TaskInterface[],
     deleteTask:(id: string) => void,
-    markAsDone:(id: string)=> void
+    markAsDone:(id: string)=> void,
+    editTask:(id: string, editedText: string)=> void
 }
 
 interface StateInterface {
@@ -20,7 +21,7 @@ class TaskList extends React.Component<PropsInterface, StateInterface> {
             <div>
                 <ul>
                     {this.props.tasks.map((task) => {
-                        return <TaskItem key={task.id} task={task} deleteTask={this.props.deleteTask} markAsDone={this.props.markAsDone} />
+                        return <TaskItem key={task.id} task={task} deleteTask={this.props.deleteTask} markAsDone={this.props.markAsDone} editTask={this.props.editTask} />
                     })}
                 </ul>
             </div>

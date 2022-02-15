@@ -14,6 +14,15 @@ class App extends React.Component {
         this.setState({ tasks: [...this.state.tasks, addedTask] });
     }
 
+    editTask = (id: string, editedText: string) => {
+        this.setState({ tasks: this.state.tasks.map((task: TaskInterface) => {
+            if(task.id === id) {
+                task.desc = editedText
+            }
+            return task
+        })})
+    }
+
     deleteTask = (id: string) => {
         this.setState({ tasks: this.state.tasks.filter((task: TaskInterface) => task.id !== id) });
     }
@@ -46,7 +55,7 @@ class App extends React.Component {
         return (
             <>
                 <Header addTask={this.addTask} markAllAsDone={this.markAllAsDone} deleteAllDone={this.deleteAllDone} />
-                <TaskList tasks={this.state.tasks} deleteTask={this.deleteTask} markAsDone={this.markAsDone} />
+                <TaskList tasks={this.state.tasks} deleteTask={this.deleteTask} markAsDone={this.markAsDone} editTask={this.editTask} />
             </>
         )
     }
