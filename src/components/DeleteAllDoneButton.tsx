@@ -1,13 +1,16 @@
 import React from "react";
-import PropsDeleteAllDoneInterface from "../interfaces/PropsDeleteAllDoneInterface";
-import StateComponentsInterface from "../interfaces/StateComponentsInterface";
+import ComponentState from "../interfaces/ComponentState";
 
-class DeleteAllDoneButton extends React.Component<PropsDeleteAllDoneInterface, StateComponentsInterface> {
-    render(): React.ReactNode {
-        return (
-        <button onClick={this.props.deleteAllDone} className="button">Удалить выполненное</button>
-    )
-    }
+interface DeleteAllDoneProps {
+   deleteAllDone: () => void;
+}
+
+class DeleteAllDoneButton extends React.Component<DeleteAllDoneProps, ComponentState> {
+   render() {
+      return (
+          <button onClick={this.props.deleteAllDone} className="button">Удалить выполненное</button>
+      )
+   }
 }
 
 export default DeleteAllDoneButton;
