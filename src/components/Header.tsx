@@ -1,18 +1,17 @@
 import React from "react";
 import TaskForm from "./TaskForm";
 import '../styles/header.css'
-import ComponentState from '../interfaces/ComponentState';
 import AllDoneButton from "./AllDoneButton";
 import DeleteAllDoneButton from "./DeleteAllDoneButton";
 import TaskInterface from "../interfaces/TaskInterface";
 
 interface HeaderProps {
-   addTask: (addedTask: TaskInterface)=> void,
-   markAllAsDone: () => void,
-   deleteAllDone: () => void
+   addTask: (addedTask: TaskInterface) => void;
+   markAllAsDone: () => void;
+   deleteAllDone: () => void;
 }
 
-class Header extends React.Component<HeaderProps, ComponentState> {
+class Header extends React.Component<HeaderProps> {
 
    render() {
       return (
@@ -25,4 +24,4 @@ class Header extends React.Component<HeaderProps, ComponentState> {
    }
 }
 
-export default Header;
+export default React.memo(Header);

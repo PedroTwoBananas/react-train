@@ -17,12 +17,10 @@ class App extends React.Component {
    editTask = (id: string, editedText: string) => {
       this.setState({
          tasks: this.state.tasks.map((task: TaskInterface) => {
-            if (task.id === id) {
-               task.description = editedText
-            }
-            return task
+            if (task.id !== id) return task;
+            return {...task, description: editedText};
          })
-      })
+      });
    }
 
    deleteTask = (id: string) => {
@@ -30,16 +28,14 @@ class App extends React.Component {
    }
 
    deleteAllDone = () => {
-      this.setState({tasks: this.state.tasks.filter((task: TaskInterface) => !task.isDone)})
+      this.setState({tasks: this.state.tasks.filter((task: TaskInterface) => !task.isDone)});
    }
 
    markAsDone = (id: string) => {
       this.setState({
          tasks: this.state.tasks.map((task: TaskInterface) => {
-            if (task.id === id) {
-               task.isDone = !task.isDone;
-            }
-            return task;
+            if (task.id !== id) return task;
+            return {...task, isDone: !task.isDone};
          })
       })
    }
@@ -47,8 +43,7 @@ class App extends React.Component {
    markAllAsDone = () => {
       this.setState({
          tasks: this.state.tasks.map((task: TaskInterface) => {
-            task.isDone = true
-            return task
+            return {...task, isDone: true};
          })
       })
    }
@@ -56,15 +51,23 @@ class App extends React.Component {
    render() {
       return (
           <>
-             <Header addTask={this.addTask} markAllAsDone={this.markAllAsDone} deleteAllDone={this.deleteAllDone}/>
-             <TaskList tasks={this.state.tasks} deleteTask={this.deleteTask} markAsDone={this.markAsDone}
-                       editTask={this.editTask}/>
+             <Header
+                 addTask={this.addTask}
+                 markAllAsDone={this.markAllAsDone}
+                 deleteAllDone={this.deleteAllDone}
+             />
+             <TaskList
+                 tasks={this.state.tasks}
+                 deleteTask={this.deleteTask}
+                 markAsDone={this.markAsDone}
+                 editTask={this.editTask}
+             />
           </>
       )
    }
 }
 
-export default App;
+export default React.memo(App);
 
 
 

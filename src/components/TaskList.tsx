@@ -1,24 +1,35 @@
 import React from "react";
-import TaskItem from "./TaskItem";
+import TaskItemBlock from "./TaskItemBlock";
 import TaskInterface from "../interfaces/TaskInterface";
-import ComponentState from "../interfaces/ComponentState";
+import '../styles/list-item.css'
 
 interface TaskListProps {
-   tasks: TaskInterface[],
-   deleteTask: (id: string) => void,
-   markAsDone: (id: string) => void,
-   editTask: (id: string, editedText: string) => void
+   tasks: TaskInterface[];
+   deleteTask: (id: string) => void;
+   markAsDone: (id: string) => void;
+   editTask: (id: string, editedText: string) => void;
 }
 
-class TaskList extends React.Component<TaskListProps, ComponentState> {
+class TaskList extends React.Component<TaskListProps> {
 
    render() {
       return (
           <div>
              <ul>
                 {this.props.tasks.map((task) => {
-                   return <TaskItem key={task.id} task={task} deleteTask={this.props.deleteTask}
-                                    markAsDone={this.props.markAsDone} editTask={this.props.editTask}/>
+                   return (
+                       <li
+                           key={task.id}
+                           className='list-item'
+                       >
+                          <TaskItemBlock
+                              task={task}
+                              deleteTask={this.props.deleteTask}
+                              markAsDone={this.props.markAsDone}
+                              editTask={this.props.editTask}
+                          />
+                       </li>
+                   )
                 })}
              </ul>
           </div>
@@ -26,4 +37,4 @@ class TaskList extends React.Component<TaskListProps, ComponentState> {
    }
 }
 
-export default TaskList;
+export default React.memo(TaskList);
