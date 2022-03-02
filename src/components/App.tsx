@@ -1,10 +1,14 @@
-import React from 'react'
+import React, { Component } from 'react'
 import Header from './Header'
 import TaskList from './TaskList'
 import TaskInterface from '../interfaces/TaskInterface'
 
-class App extends React.Component {
-   state: { tasks: TaskInterface[] } = {
+interface AppState {
+   tasks: TaskInterface[]
+}
+
+class App extends Component<{}, AppState> {
+   state = {
       tasks: [],
    }
 
@@ -29,22 +33,22 @@ class App extends React.Component {
       })
    }
 
-   deleteAllDone = () => {
+   deleteAllChecked = () => {
       this.setState({
          tasks: this.state.tasks.filter((task: TaskInterface) => !task.isDone),
       })
    }
 
-   markAsDone = (id: string) => {
+   markTask = (id: string) => {
       this.setState({
          tasks: this.state.tasks.map((task: TaskInterface) => {
             if (task.id !== id) return task
-            return { ...task, isDone: !task.isDone }
+            return { ...task, isDone: true }
          }),
       })
    }
 
-   markAllAsDone = () => {
+   markAllTasks = () => {
       this.setState({
          tasks: this.state.tasks.map((task: TaskInterface) => {
             return { ...task, isDone: true }
@@ -57,13 +61,13 @@ class App extends React.Component {
          <>
             <Header
                addTask={this.addTask}
-               markAllAsDone={this.markAllAsDone}
-               deleteAllDone={this.deleteAllDone}
+               markAllTasks={this.markAllTasks}
+               deleteAllChecked={this.deleteAllChecked}
             />
             <TaskList
                tasks={this.state.tasks}
                deleteTask={this.deleteTask}
-               markAsDone={this.markAsDone}
+               markTask={this.markTask}
                editTask={this.editTask}
             />
          </>
@@ -71,4 +75,4 @@ class App extends React.Component {
    }
 }
 
-export default React.memo(App)
+export default App

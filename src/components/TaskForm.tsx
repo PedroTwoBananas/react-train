@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import uniqid from 'uniqid'
 import TaskInterface from '../interfaces/TaskInterface'
 import '../styles/form-block.css'
@@ -8,7 +8,7 @@ interface AddTaskProps {
    addTask: (addedTask: TaskInterface) => void
 }
 
-class AddTaskForm extends React.Component<AddTaskProps> {
+class AddTaskForm extends Component<AddTaskProps> {
    state = {
       value: '',
    }
@@ -24,7 +24,7 @@ class AddTaskForm extends React.Component<AddTaskProps> {
          isDone: false,
       }
       this.props.addTask(textItem)
-      this.setState({ ...this.state, value: '' })
+      this.setState({ value: '' })
    }
 
    render() {
@@ -48,4 +48,4 @@ class AddTaskForm extends React.Component<AddTaskProps> {
    }
 }
 
-export default React.memo(AddTaskForm)
+export default AddTaskForm

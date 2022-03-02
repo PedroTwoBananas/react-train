@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {Component} from 'react'
 import TaskItemBlock from './TaskItemBlock'
 import TaskInterface from '../interfaces/TaskInterface'
 import '../styles/list-item.css'
@@ -6,11 +6,11 @@ import '../styles/list-item.css'
 interface TaskListProps {
    tasks: TaskInterface[]
    deleteTask: (id: string) => void
-   markAsDone: (id: string) => void
+   markTask: (id: string) => void
    editTask: (id: string, editedText: string) => void
 }
 
-class TaskList extends React.Component<TaskListProps> {
+class TaskList extends Component<TaskListProps> {
    render() {
       return (
          <div>
@@ -21,7 +21,7 @@ class TaskList extends React.Component<TaskListProps> {
                         <TaskItemBlock
                            task={task}
                            deleteTask={this.props.deleteTask}
-                           markAsDone={this.props.markAsDone}
+                           markTask={this.props.markTask}
                            editTask={this.props.editTask}
                         />
                      </li>
@@ -33,4 +33,4 @@ class TaskList extends React.Component<TaskListProps> {
    }
 }
 
-export default React.memo(TaskList)
+export default TaskList;

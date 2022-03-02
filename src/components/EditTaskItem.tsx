@@ -1,15 +1,16 @@
-import React from 'react'
-import TaskInterface from '../interfaces/TaskInterface'
+import React, { Component } from 'react'
 import '../styles/list-item.css'
 
 interface EditTaskItemProps {
-   task: TaskInterface
-   changeEdit: (value: string) => void
-   isEdit: boolean
+   confirmChanges: (value: string) => void
 }
 
-class EditTaskItem extends React.Component<EditTaskItemProps> {
-   state: { value: string } = {
+interface EditTaskItemState {
+   value: string
+}
+
+class EditTaskItem extends Component<EditTaskItemProps, EditTaskItemState> {
+   state = {
       value: '',
    }
 
@@ -17,8 +18,8 @@ class EditTaskItem extends React.Component<EditTaskItemProps> {
       this.setState({ value: e.currentTarget.value })
    }
 
-   changeTask = () => {
-      this.props.changeEdit(this.state.value)
+   changeText = () => {
+      this.props.confirmChanges(this.state.value)
       this.setState({ value: '' })
    }
 
@@ -33,7 +34,7 @@ class EditTaskItem extends React.Component<EditTaskItemProps> {
             <button
                disabled={!this.state.value}
                className="button"
-               onClick={this.changeTask}
+               onClick={this.changeText}
             >
                Переписать
             </button>
@@ -42,4 +43,4 @@ class EditTaskItem extends React.Component<EditTaskItemProps> {
    }
 }
 
-export default React.memo(EditTaskItem)
+export default EditTaskItem

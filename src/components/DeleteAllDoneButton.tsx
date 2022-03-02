@@ -1,18 +1,18 @@
-import React from 'react'
+import React, {Component, PureComponent} from 'react'
 import '../styles/button.css'
 
-interface DeleteAllDoneProps {
-   deleteAllDone: () => void
+interface DeleteAllDoneButtonProps {
+   deleteAllChecked: () => void
 }
 
-class DeleteAllDoneButton extends React.Component<DeleteAllDoneProps> {
+class DeleteAllDoneButton extends PureComponent<DeleteAllDoneButtonProps> {
    render() {
       return (
-         <button onClick={this.props.deleteAllDone} className="button">
+         <button onClick={this.props.deleteAllChecked} className="button">
             Удалить выполненное
          </button>
       )
    }
 }
 
-export default React.memo(DeleteAllDoneButton)
+export default DeleteAllDoneButton;

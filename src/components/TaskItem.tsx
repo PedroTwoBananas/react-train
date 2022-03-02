@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import TaskInterface from '../interfaces/TaskInterface'
 import '../styles/button.css'
 import '../styles/list-item.css'
@@ -6,18 +6,17 @@ import '../styles/list-item.css'
 interface TaskItemProps {
    task: TaskInterface
    deleteTask: (id: string) => void
-   markAsDone: (id: string) => void
-   isEdit: boolean
+   markTask: (id: string) => void
    changeEditState: () => void
 }
 
-class TaskItem extends React.Component<TaskItemProps> {
+class TaskItem extends Component<TaskItemProps> {
    deleteTaskButton = () => {
       this.props.deleteTask(this.props.task.id)
    }
 
-   markAsDoneButton = () => {
-      this.props.markAsDone(this.props.task.id)
+   checkTask = () => {
+      this.props.markTask(this.props.task.id)
    }
 
    editItem = () => {
@@ -33,7 +32,7 @@ class TaskItem extends React.Component<TaskItemProps> {
             </button>
             {!this.props.task.isDone && (
                <>
-                  <button onClick={this.markAsDoneButton} className="button">
+                  <button onClick={this.checkTask} className="button">
                      Отметить как выполнено
                   </button>
                   <button onClick={this.editItem} className="button">
@@ -46,4 +45,4 @@ class TaskItem extends React.Component<TaskItemProps> {
    }
 }
 
-export default React.memo(TaskItem)
+export default TaskItem

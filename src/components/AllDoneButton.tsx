@@ -1,18 +1,18 @@
-import React from 'react'
+import React, {Component, PureComponent} from 'react'
 import '../styles/button.css'
 
-interface AllDoneProps {
-   markAllAsDone: () => void
+interface AllDoneButtonProps {
+   markAllTasks: () => void
 }
 
-class AllDoneButton extends React.Component<AllDoneProps> {
+class AllDoneButton extends PureComponent<AllDoneButtonProps> {
    render() {
       return (
-         <button onClick={this.props.markAllAsDone} className="button">
+         <button onClick={this.props.markAllTasks} className="button">
             Отметить всё как выполнено
          </button>
       )
    }
 }
 
-export default React.memo(AllDoneButton)
+export default AllDoneButton;

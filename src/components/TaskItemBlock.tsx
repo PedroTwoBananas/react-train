@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { PureComponent } from 'react'
 import TaskInterface from '../interfaces/TaskInterface'
 import TaskItem from '../components/TaskItem'
 import EditTaskItem from './EditTaskItem'
@@ -6,11 +6,11 @@ import EditTaskItem from './EditTaskItem'
 interface TaskItemBlockProps {
    task: TaskInterface
    deleteTask: (id: string) => void
-   markAsDone: (id: string) => void
+   markTask: (id: string) => void
    editTask: (id: string, editedText: string) => void
 }
 
-class TaskItemBlock extends React.Component<TaskItemBlockProps> {
+class TaskItemBlock extends PureComponent<TaskItemBlockProps> {
    state: { isEdit: boolean } = {
       isEdit: false,
    }
@@ -19,7 +19,7 @@ class TaskItemBlock extends React.Component<TaskItemBlockProps> {
       this.setState({ isEdit: !this.state.isEdit })
    }
 
-   changeEdit = (value: string) => {
+   confirmChanges = (value: string) => {
       this.props.editTask(this.props.task.id, value)
       this.setState({ ...this.state, isEdit: !this.state.isEdit })
    }
@@ -29,18 +29,13 @@ class TaskItemBlock extends React.Component<TaskItemBlockProps> {
          <TaskItem
             task={this.props.task}
             deleteTask={this.props.deleteTask}
-            markAsDone={this.props.markAsDone}
+            markTask={this.props.markTask}
             changeEditState={this.changeEditState}
-            isEdit={this.state.isEdit}
          />
       ) : (
-         <EditTaskItem
-            changeEdit={this.changeEdit}
-            task={this.props.task}
-            isEdit={this.state.isEdit}
-         />
+         <EditTaskItem confirmChanges={this.confirmChanges} />
       )
    }
 }
 
-export default React.memo(TaskItemBlock)
+export default TaskItemBlock
