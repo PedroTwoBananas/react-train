@@ -1,11 +1,11 @@
-import React, {Component, PureComponent} from 'react'
+import React, { Component, PureComponent } from 'react'
 import '../styles/button.css'
 
 interface DeleteAllDoneButtonProps {
    deleteAllChecked: () => void
 }
 
-class DeleteAllDoneButton extends PureComponent<DeleteAllDoneButtonProps> {
+class DeleteAllMarkButton extends PureComponent<DeleteAllDoneButtonProps> {
    render() {
       return (
          <button onClick={this.props.deleteAllChecked} className="button">
@@ -15,4 +15,4 @@ class DeleteAllDoneButton extends PureComponent<DeleteAllDoneButtonProps> {
    }
 }
 
-export default DeleteAllDoneButton;
+export default DeleteAllMarkButton

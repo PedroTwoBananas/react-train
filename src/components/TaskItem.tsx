@@ -7,35 +7,35 @@ interface TaskItemProps {
    task: TaskInterface
    deleteTask: (id: string) => void
    markTask: (id: string) => void
-   changeEditState: () => void
+   changeTask: () => void
 }
 
 class TaskItem extends Component<TaskItemProps> {
-   deleteTaskButton = () => {
+   clickToDelete = () => {
       this.props.deleteTask(this.props.task.id)
    }
 
-   checkTask = () => {
+   clickToMark = () => {
       this.props.markTask(this.props.task.id)
    }
 
-   editItem = () => {
-      this.props.changeEditState()
+   clickToChange = () => {
+      this.props.changeTask()
    }
 
    render() {
       return (
          <>
             <span className="task-text">{this.props.task.description}</span>
-            <button onClick={this.deleteTaskButton} className="button">
+            <button onClick={this.clickToDelete} className="button">
                Удалить
             </button>
             {!this.props.task.isDone && (
                <>
-                  <button onClick={this.checkTask} className="button">
+                  <button onClick={this.clickToMark} className="button">
                      Отметить как выполнено
                   </button>
-                  <button onClick={this.editItem} className="button">
+                  <button onClick={this.clickToMark} className="button">
                      Изменить
                   </button>
                </>

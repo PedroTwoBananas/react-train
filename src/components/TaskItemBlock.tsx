@@ -15,7 +15,7 @@ class TaskItemBlock extends PureComponent<TaskItemBlockProps> {
       isEdit: false,
    }
 
-   changeEditState = () => {
+   changeTask = () => {
       this.setState({ isEdit: !this.state.isEdit })
    }
 
@@ -30,7 +30,7 @@ class TaskItemBlock extends PureComponent<TaskItemBlockProps> {
             task={this.props.task}
             deleteTask={this.props.deleteTask}
             markTask={this.props.markTask}
-            changeEditState={this.changeEditState}
+            changeTask={this.changeTask}
          />
       ) : (
          <EditTaskItem confirmChanges={this.confirmChanges} />

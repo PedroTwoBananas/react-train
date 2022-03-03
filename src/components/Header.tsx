@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react'
 import TaskForm from './TaskForm'
-import AllDoneButton from './AllDoneButton'
-import DeleteAllDoneButton from './DeleteAllDoneButton'
+import MarkAllButton from './MarkAllButton'
+import DeleteAllMarkButton from './DeleteAllMarkButton'
 import TaskInterface from '../interfaces/TaskInterface'
 import '../styles/header.css'
 
@@ -16,8 +16,8 @@ class Header extends PureComponent<HeaderProps> {
       return (
          <div className="header">
             <TaskForm addTask={this.props.addTask} />
-            <AllDoneButton markAllTasks={this.props.markAllTasks} />
-            <DeleteAllDoneButton
+            <MarkAllButton markAllTasks={this.props.markAllTasks} />
+            <DeleteAllMarkButton
                deleteAllChecked={this.props.deleteAllChecked}
             />
          </div>

@@ -18,7 +18,7 @@ class EditTaskItem extends Component<EditTaskItemProps, EditTaskItemState> {
       this.setState({ value: e.currentTarget.value })
    }
 
-   changeText = () => {
+   clickToConfirm = () => {
       this.props.confirmChanges(this.state.value)
       this.setState({ value: '' })
    }
@@ -34,7 +34,7 @@ class EditTaskItem extends Component<EditTaskItemProps, EditTaskItemState> {
             <button
                disabled={!this.state.value}
                className="button"
-               onClick={this.changeText}
+               onClick={this.clickToConfirm}
             >
                Переписать
             </button>
