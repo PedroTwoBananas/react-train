@@ -1,23 +1,28 @@
-import React from "react";
-import { render } from "react-dom";
-import TaskForm from "./TaskForm";
+import React, { PureComponent } from 'react'
+import TaskForm from './TaskForm'
+import MarkAllButton from './MarkAllButton'
+import DeleteAllMarkButton from './DeleteAllMarkButton'
+import TaskInterface from '../interfaces/TaskInterface'
 import '../styles/header.css'
-import StateComponentsInterface from '../interfaces/StateComponentsInterface';
-import AllDoneButton from "./AllDoneButton";
-import HeaderPropsInterface from "../interfaces/HeaderPropsInterface";
-import DeleteAllDoneButton from "./DeleteAllDoneButton";
 
-class Header extends React.Component<HeaderPropsInterface, StateComponentsInterface> {
-
-    render() {
-        return (
-            <div className="header">
-                <TaskForm addTask={this.props.addTask} />
-                <AllDoneButton markAllAsDone={this.props.markAllAsDone}/>
-                <DeleteAllDoneButton deleteAllDone={this.props.deleteAllDone}/>
-            </div>
-        )
-    }
+interface HeaderProps {
+   addTask: (addedTask: TaskInterface) => void
+   markAllTasks: () => void
+   deleteAllChecked: () => void
 }
 
-export default Header;
+class Header extends PureComponent<HeaderProps> {
+   render() {
+      return (
+         <div className="header">
+            <TaskForm addTask={this.props.addTask} />
+            <MarkAllButton markAllTasks={this.props.markAllTasks} />
+            <DeleteAllMarkButton
+               deleteAllChecked={this.props.deleteAllChecked}
+            />
+         </div>
+      )
+   }
+}
+
+export default Header

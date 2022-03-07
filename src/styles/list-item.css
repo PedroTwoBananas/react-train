@@ -1,12 +1,12 @@
 .list-item {
-    width: 788px;
-    padding: 6px;
-    margin-bottom: 6px;
-    border: 2px solid grey;
-    border-radius: 15px;
-    list-style: none;
+  width: 788px;
+  padding: 6px;
+  margin-bottom: 6px;
+  border: 2px solid grey;
+  border-radius: 15px;
+  list-style: none;
 }
 
 .task-text {
-    margin-right: 60px;
+  margin-right: 60px;
 }
